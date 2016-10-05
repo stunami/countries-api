@@ -7,11 +7,6 @@ sudo apt install -y \
             php5-mysql \
             php5-curl \
 
-#export DEBIAN_FRONTEND="noninteractive"
-#
-#sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password"
-#sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password"
-
 sudo apt-get install -y mysql-server
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -23,11 +18,11 @@ sudo cp composer.phar /usr/local/bin/composer
 
 cd /vagrant
 
-sudo -u vagrant composer install
+composer install
 
-sudo -u vagrant php app/console doctrine:database:create
-sudo -u vagrant php app/console doctrine:schema:create
+php app/console doctrine:database:create
+php app/console doctrine:schema:create
 
-sudo -u vagrant php app/console countries:import
+php app/console countries:import
 
-sudo -u vagrant php app/console server:run 0.0.0.0:8000 -v
+php app/console server:run 0.0.0.0:8000 -v
