@@ -36,6 +36,8 @@ Access the site via:
 
 ```
 http://33.33.33.33:8000/app_dev.php/api/v1/countries
+
+http://33.33.33.33:8000/app_dev.php/api/v1/countries/GB
 ```
 
 The project files are accessible inside the vm at:

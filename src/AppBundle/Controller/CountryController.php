@@ -8,13 +8,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class CountriesController extends Controller
+class CountryController extends Controller
 {
-    /**
-     * @Route("/api/v1/countries")
-     * @Template()
-     */
-    public function getAction()
+    public function getCountryAction($iso2Code)
+    {
+        $country = $this->getDoctrine()->getRepository(Country::class)->findOneByIso2Code($iso2Code);
+
+        return [$country];
+    }
+
+    public function getCountriesAction()
     {
         $filters = $this->getRequest()->query->all();
 
@@ -24,4 +27,4 @@ class CountriesController extends Controller
             $countries
         );
     }
-}
+    }

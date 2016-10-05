@@ -5,4 +5,5 @@ app:
 
 countries:
   type: rest
-  resource: AppBundle\Controller\CountriesController
+  resource: AppBundle\Controller\CountryController
+  prefix: /api/v1
