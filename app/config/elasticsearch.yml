@@ -1,0 +1,93 @@
+ukwm_elastic_search:
+    clients:
+        default: "%elastic_search_hosts%"
+
+    transformers:
+        entity:
+            vehicle:
+                product: UKWM\Bundle\CarsBundle\Search\DTO\Model
+                product.manufacturer: UKWM\Bundle\CarsBundle\Search\DTO\Manufacturer
+                product.variants: UKWM\Bundle\CarsBundle\Search\DTO\Variant
+                product.tags: UKWM\Bundle\TagBundle\Search\DTO\Tag
+                product.review: UKWM\Bundle\CarsBundle\Search\DTO\Review
+
+                variant: UKWM\Bundle\CarsBundle\Search\DTO\Variant
+                variant.model: UKWM\Bundle\CarsBundle\Search\DTO\Model
+                variant.model.manufacturer: UKWM\Bundle\CarsBundle\Search\DTO\Manufacturer
+                variant.model.tags: UKWM\Bundle\TagBundle\Search\DTO\Tag
+                variant.model.review: UKWM\Bundle\CarsBundle\Search\DTO\Review
+
+            publish:
+                document: UKWM\Bundle\DocumentBundle\Entity\DTO\Document
+                document.thumbnail: UKWM\Bundle\MediaBundle\Entity\Asset
+                document.tags: UKWM\Bundle\TagBundle\Search\DTO\Tag
+                document.author: UKWM\Bundle\DocumentBundle\Entity\DTO\Author
+                document.seo: UKWM\Bundle\DocumentBundle\Entity\DTO\Seo
+                document.product: UKWM\Bundle\CarsBundle\Search\DTO\Model
+
+
+    repositories:
+        models:
+            indexes: [vehicle]
+            types: [product]
+            transformer: entity
+            client: default
+        variants:
+            indexes: [vehicle]
+            types: [variant]
+            transformer: entity
+            client: default
+        documents:
+            indexes: [publish]
+            types: [document]
+            transformer: entity
+            client: default
+            
+    analyzers:
+        indexAnalyzer:
+            type: custom
+            tokenizer: standard
+            filter: [lowercase]
+        searchAnalyzer:
+            type: custom
+            tokenizer: standard
+            filter: [standard, lowercase]
+
+    # Indexes
+    indexes:
+        publish:
+            types:
+                document:
+                    index_analyzer: indexAnalyzer
+                    search_analyzer: searchAnalyzer
+                    mapping: 
+                        properties:
+                            created_at:
+                                type: date
+                            updated_at:
+                                type: date
+                            published_at:
+                                type: date
+                            author:
+                                type: "nested"
+                            authors:
+                                type: "nested"
+                                include_in_parent: true
+                                include_in_root: false
+                            seo:
+                                type: "nested"
+                            tags:
+                                type: "nested"
+                                include_in_parent: true
+                                include_in_root: false
+                            model:
+                                type: "nested"
+                                properties:
+                                    manufacturer:
+                                        type: nested
+                            weekly_page_views:
+                                type: integer
+                                store: true
+                            monthly_page_views:
+                                type: integer
+                                store: true

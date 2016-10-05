@@ -1,0 +1,33 @@
+objects:
+  not_found:
+    data:
+      code: 404
+      body:
+        errors:
+          - Resource not found
+
+  method_not_allowed:
+    data:
+      code: 409
+
+  bad_request:
+    data:
+      code: 400
+
+  bad_request.invalid:
+    merge: bad_request
+    data:
+      body: { errors: [ 'Request is not valid json' ] }
+
+  ok:
+    data:
+      code: 200
+
+  created:
+    data:
+      code: 201
+
+  conflict:
+    data:
+      code: 409
+

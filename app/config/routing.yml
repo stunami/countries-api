@@ -1,0 +1,8 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+countries:
+  type: rest
+  resource: AppBundle\Controller\CountriesController

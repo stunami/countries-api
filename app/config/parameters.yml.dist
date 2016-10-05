@@ -1,0 +1,32 @@
+parameters:
+    database_driver:   pdo_pgsql
+    database_host:     %%DATABASE_HOST%%
+    database_port:     %%DATABASE_PORT%%
+    database_name:     %%DATABASE_NAME%%
+    database_user:     %%DATABASE_USER%%
+    database_password: %%DATABASE_PASSWORD%%
+
+    mailer_transport:  smtp
+    mailer_host:       %%SMTP_HOST%%
+    mailer_user:       %%SMTP_USER%%
+    mailer_password:   %%SMTP_PASSWORD%%
+    mailer_port:       %%SMTP_PORT%%
+
+    locale:            en
+    secret:            6c0db0f297ef2e8ce84b9e08d57ae99e
+
+    elastic_search_hosts: %%ELASTIC_SEARCH_HOSTS%%
+          #-
+          #  host: localhost
+          #  port: 9200
+
+    cdn_root: %%CDN_ROOT%%
+
+    gearbox_host: %%GEARBOX_HOST%%
+    gearbox_port: %%GEARBOX_PORT%%
+
+    editors_mailing_list: %%EDITORS_MAILING_LIST%%
+
+    mws_hostname: %%MWS_HOSTNAME%%
+    mws_base: /api
+    mws_token: %%MWS_TOKEN%%

@@ -1,0 +1,31 @@
+imports:
+    - { resource: config_dev.yml }
+
+parameters:
+    ukwm_search_indexer.client.class: UKWM\Bundle\SearchIndexerBundle\Indexer\MockClient
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        enabled: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+doctrine:
+    dbal:
+        driver:   pdo_pgsql
+        dbname:   %database_name%_test
+        user:     "%database_user%"
+        password: "%database_password%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+
+ukwm_media:
+  root_dir: %kernel.root_dir%/cache/test/testdata
