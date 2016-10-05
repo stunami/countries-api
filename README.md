@@ -1,4 +1,4 @@
-Developing using Vagrant
+Developed using Vagrant
 
 Install Virtual Box
 Download the latest version of VirtualBox
@@ -36,6 +36,10 @@ Access the site via:
 
 ```
 http://33.33.33.33:8000/app_dev.php/api/v1/countries
+
+http://33.33.33.33:8000/app_dev.php/api/v1/countries?iso2code=GB
+
+http://33.33.33.33:8000/app_dev.php/api/v1/countries?language=it
 
 http://33.33.33.33:8000/app_dev.php/api/v1/countries/GB
 ```
