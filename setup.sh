@@ -7,11 +7,6 @@ sudo apt install -y \
             php5-mysql \
             php5-curl \
 
-#export DEBIAN_FRONTEND="noninteractive"
-#
-#sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password"
-#sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password"
-
 sudo apt-get install -y mysql-server
 
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
