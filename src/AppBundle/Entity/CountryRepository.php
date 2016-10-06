@@ -14,7 +14,7 @@ use Doctrine\ORM\QueryBuilder;
 final class CountryRepository extends EntityRepository
 {
     private $filterMap = [
-        'iso2' => 'c.iso2Code',
+        'iso2code' => 'c.iso2Code',
         'language' => 'l.code'
     ];
 
